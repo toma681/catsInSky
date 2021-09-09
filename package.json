@@ -1,0 +1,24 @@
+{
+  "name": "catsinsky",
+  "version": "1.0.0",
+  "description": "Backend Takehome Assignment for WDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toma681/catsInSky.git"
+  },
+  "author": "Andrew Tom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toma681/catsInSky/issues"
+  },
+  "homepage": "https://github.com/toma681/catsInSky#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  }
+}
