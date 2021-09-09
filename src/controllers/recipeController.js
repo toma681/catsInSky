@@ -1,10 +1,13 @@
-const { returnVeges, returnCats } = require('../db/tempDB')
+const { retrieveRecipes } = require('../services/recipeService');
 
 const getAll = (req, res) => {
-    let cats = returnCats();
-    let veges = returnVeges();
-
-    res.send(cats + veges);
+    try {
+        let recipes = retrieveRecipes();
+        res.send(recipes);
+    } catch (error) {
+        console.log(e.message);
+        res.sendStatus(500);
+    }
 }
 
 module.exports = {
