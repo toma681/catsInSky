@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const { getCats, postCat } = require('../controllers/catController');
+const catController = require('../controllers/catController');
 
-router.get('/cats', getCats);
-router.post('/cat', postCat);
+router.get('/cats', catController.retrieve);
+router.post('/cat', catController.post);
+router.delete('/cat', catController.remove)
 
 module.exports = router;

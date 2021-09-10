@@ -1,11 +1,11 @@
-const { postCat, catDB } = require('../db/catDB');
+const catDB = require('../db/catDB');
 
-const postAndUpdateRecipes = async (catName) => {
-    return await postCat(catName);
+const post = async (catName) => {
+    return await catDB.post(catName);
 }
 
-const retrieveRecipes = async () => {
-    let cats = await catDB();
+const retrieve = async () => {
+    let cats = await catDB.retrieve();
 
     let recipeFormat = {};
 
@@ -17,7 +17,12 @@ const retrieveRecipes = async () => {
     return recipeFormat;
 }
 
+const remove = (name) => {
+    catDB.remove(name);
+}
+
 module.exports = {
-    retrieveRecipes,
-    postAndUpdateRecipes
+    post,
+    retrieve,
+    remove
 }
