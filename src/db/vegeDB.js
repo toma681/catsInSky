@@ -1,30 +1,6 @@
 const Cat = require('../models/cat');
 const Vege = require('../models/vege');
 
-const catDB = async () => {
-    let cats = await Cat.find({}, 'name veges');
-    return cats;
-}
-
-const postCat = async (name) => {
-
-    let catExists = await Cat.exists({ name });
-    if (!catExists) {
-        let newCat = new Cat({ name, veges: [], firstChar: name[0].toLowerCase() });
-        await newCat.save(err => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("POG");
-            }
-        })
-    } else {
-        return null;
-    }
-
-    return "pogCat";
-}
-
 const postVege = async (name) => {
     // First, add vege to vegeList
     // Then, add it to cats
@@ -40,7 +16,7 @@ const postVege = async (name) => {
             }
         })
 
-        let catsToUpdate = await Cat.find({firstChar: newVege.firstChar});
+        let catsToUpdate = await Cat.find({ firstChar: newVege.firstChar });
 
         for (let i = 0; i < catsToUpdate.length; i++) {
             let curCat = catsToUpdate[i];
@@ -62,8 +38,6 @@ const delVege = () => {
 }
 
 module.exports = {
-    catDB,
-    postCat,
     postVege,
     delVege
 }

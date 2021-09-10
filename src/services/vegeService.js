@@ -1,4 +1,4 @@
-const { postVege } = require('../db/tempDB');
+const { postVege } = require('../db/vegeDB');
 
 const insertVege = async (catName) => {
     return await postVege(catName);

@@ -1,4 +1,4 @@
-const { postCat, catDB } = require('../db/tempDB');
+const { postCat, catDB } = require('../db/catDB');
 
 const postAndUpdateRecipes = async (catName) => {
     /*
