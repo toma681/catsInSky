@@ -23,7 +23,7 @@ const post = async (req, res) => {
 
 const remove = async (req, res) => {
     try {
-        let catName = req.body?.cat;
+        let catName = req.body.cat;
         let cats = await catService.remove(catName);
         res.send(cats);
     } catch (e) {
