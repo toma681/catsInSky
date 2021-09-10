@@ -1,7 +1,13 @@
-const { postAndUpdateRecipes } = require('../services/catService');
+const { postAndUpdateRecipes, retrieveRecipes } = require('../services/catService');
 
 const getCats = async (req, res) => {
-
+    try {
+        let recipes = await retrieveRecipes();
+        res.send(recipes);
+    } catch (error) {
+        console.log(e.message);
+        res.sendStatus(500);
+    }
 }
 
 const postCat = async (req, res) => {
@@ -16,5 +22,6 @@ const postCat = async (req, res) => {
 }
 
 module.exports = {
+    getCats,
     postCat
 }

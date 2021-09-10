@@ -1,18 +1,15 @@
 const Cat = require('../models/cat');
 
-const recipeDB = async () => {
-    return {
-        "Alex": ["Artichoke", "Asparagus"],
-        "Abhi": ["Artichoke", "Asparagus"],
-        "Samarth": ["Squash"],
-    }
+const catDB = async () => {
+    let cats = await Cat.find({}, 'name veges');
+    return cats;
 }
 
 const postCat = async (name) => {
 
     let catExists = await Cat.exists({ name });
     if (!catExists) {
-        let newCat = new Cat({ name: name, veges: [] });
+        let newCat = new Cat({ name: name, veges: [], firstChar: name[0].toLowerCase() });
         await newCat.save(err => {
             if (err) {
                 console.log(err);
@@ -34,7 +31,7 @@ const delVege = () => {
 }
 
 module.exports = {
-    recipeDB,
+    catDB,
     postCat,
     postVege,
     delVege
