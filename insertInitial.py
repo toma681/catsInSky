@@ -1,8 +1,7 @@
 # Calls WDB API and inserts initial Data into DB
 
-from os import environ
 from requests import get, post
-from json import loads, dumps
+from json import loads
 
 cats = loads(
     get("http://cats-in-the-sky.herokuapp.com/api/cats").content.decode())
