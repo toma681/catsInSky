@@ -2,7 +2,7 @@ const { insertVege, hideOrDeleteVege } = require('../services/vegeService');
 
 const createVege = async (req, res) => {
     try {
-        let vegeName = req.body?.vege;
+        let vegeName = req.body.vege;
         let veges = await insertVege(vegeName);
         res.send(veges);
     } catch (e) {
@@ -13,7 +13,7 @@ const createVege = async (req, res) => {
 
 const deleteVege = async (req, res) => {
     try {
-        let vegeName = req.body?.vege;
+        let vegeName = req.body.vege;
         let veges = await hideOrDeleteVege(vegeName);
         res.send(veges);
     } catch (e) {

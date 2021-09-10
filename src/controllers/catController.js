@@ -12,7 +12,7 @@ const retrieve = async (req, res) => {
 
 const post = async (req, res) => {
     try {
-        let catName = req.body?.cat;
+        let catName = req.body.cat;
         let cats = await catService.post(catName);
         res.send(cats);
     } catch (e) {
