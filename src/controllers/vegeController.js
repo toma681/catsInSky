@@ -1,4 +1,4 @@
-const { insertVege } = require('../services/vegeService');
+const { insertVege, hideOrDeleteVege } = require('../services/vegeService');
 
 const createVege = async (req, res) => {
     try {
@@ -11,6 +11,18 @@ const createVege = async (req, res) => {
     }
 }
 
+const deleteVege = async (req, res) => {
+    try {
+        let vegeName = req.body?.vege;
+        let veges = await hideOrDeleteVege(vegeName);
+        res.send(veges);
+    } catch (e) {
+        console.log(e.message);
+        res.sendStatus(500);
+    }
+}
+
 module.exports = {
     createVege,
+    deleteVege
 }

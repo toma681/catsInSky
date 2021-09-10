@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const vegeSchema = new Schema({
     name: { type: String, required: true },
+    cats: [],
     firstChar: {type: String, required: true}
 });
 
