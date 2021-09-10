@@ -9,15 +9,15 @@ const recipeDB = () => {
 }
 
 const postCat = () => {
-
+    return "pogCat";
 }
 
 const postVege = () => {
-
+    return "pogVege";
 }
 
 const delVege = () => {
-
+    return "pogDelVege";
 }
 
 module.exports = {

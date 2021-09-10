@@ -1,10 +1,10 @@
-const { retrieveRecipes } = require('../services/recipeService');
-const express = require("express");
+const { postAndUpdateRecipes } = require('../services/catService');
+
 const postCat = (req, res) => {
     try {
         let catPayload = req.body;
-        let recipes = retrieveRecipes();
-        res.send(recipes);
+        let cats = postAndUpdateRecipes(catPayload);
+        res.send(cats);
     } catch (error) {
         console.log(e.message);
         res.sendStatus(500);
