@@ -10,11 +10,10 @@ const recipeDB = async () => {
 
 const postCat = async (name) => {
 
-    let catExists = await Cat.exists({ name: "Alice" });
+    let catExists = await Cat.exists({ name });
     if (!catExists) {
-        console.log(33);
         let newCat = new Cat({ name: name, veges: [] });
-        newCat.save(err => {
+        await newCat.save(err => {
             if (err) {
                 console.log(err);
             } else {

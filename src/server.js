@@ -1,5 +1,6 @@
+const env = require('dotenv').config();
 const express = require("express");
-const db = require('./utils/dbConnect');
+const dbConnection = require('./utils/dbConnect');
 
 const app = express();
 const recipeRoute = require('./routes/recipeRoute');
