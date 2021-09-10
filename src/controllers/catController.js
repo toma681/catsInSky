@@ -4,7 +4,7 @@ const getCats = async (req, res) => {
     try {
         let recipes = await retrieveRecipes();
         res.send(recipes);
-    } catch (error) {
+    } catch (e) {
         console.log(e.message);
         res.sendStatus(500);
     }
@@ -15,7 +15,7 @@ const postCat = async (req, res) => {
         let catName = req.body?.cat;
         let cats = await postAndUpdateRecipes(catName);
         res.send(cats);
-    } catch (error) {
+    } catch (e) {
         console.log(e.message);
         res.sendStatus(500);
     }

@@ -14,4 +14,6 @@ for cat in cats:
     print(res)
 
 for vege in veges:
-    payload = {"vege", vege}
+    payload = {"vege": vege}
+    res = post("http://localhost:3000/vege", json=payload)
+    print(res)
