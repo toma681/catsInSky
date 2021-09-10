@@ -1,4 +1,5 @@
 const express = require("express");
+const db = require('./utils/dbConnect');
 
 const app = express();
 const recipeRoute = require('./routes/recipeRoute');

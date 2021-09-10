@@ -1,8 +1,8 @@
 const { retrieveRecipes } = require('../services/recipeService');
 
-const getAll = (req, res) => {
+const getAll = async (req, res) => {
     try {
-        let recipes = retrieveRecipes();
+        let recipes = await retrieveRecipes();
         res.send(recipes);
     } catch (error) {
         console.log(e.message);
