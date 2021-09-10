@@ -11,16 +11,19 @@ const postCat = async (name) => {
     let catExists = await Cat.exists({ name });
     if (!catExists) {
         let newCat = new Cat({ name, veges: [], firstChar: name[0].toLowerCase() });
-        await newCat.save(err => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("POG");
-            }
-        })
-    } else {
-        return null;
-    }
+
+        let vegeList = await Vege.find({ firstChar: newCat.firstChar })
+
+        for (let i = 0; i < vegeList.length; i++) {
+            let curVege = vegeList[i];
+
+            newCat.veges.push(curVege.name);
+            curVege.cats.push(newCat.name);
+            curVege.save();
+        }
+
+        newCat.save();
+    } 
 
     return "pogCat";
 }

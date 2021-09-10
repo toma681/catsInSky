@@ -17,17 +17,9 @@ const postVege = async (name) => {
             newVege.cats.push(curCat.name);
         }
 
-        await newVege.save(err => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("POG");
-            }
-        })
+        newVege.save()
 
-    } else {
-        return null;
-    }
+    } 
 
     return "pogVege";
 }
@@ -42,15 +34,13 @@ const delVege = async (name) => {
                 let curCat = await Cat.findOne({name: catList[i]});
                 let index = curCat.veges.indexOf(name);
                 curCat.veges.splice(index);
-                await curCat.save();
+                curCat.save();
             }
         } else {
-            await foundVege.delete();
+            foundVege.delete();
         }
 
-    } else {
-        return null;
-    }
+    } 
     return "pogDelVege";
 }
 

@@ -1,11 +1,6 @@
 const { postCat, catDB } = require('../db/catDB');
 
 const postAndUpdateRecipes = async (catName) => {
-    /*
-    1. Post the Cat (make new entry in cats)
-    2. Add all new Veges to cat
-
-    */
     return await postCat(catName);
 }
 
