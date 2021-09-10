@@ -1,5 +1,9 @@
 const { postAndUpdateRecipes } = require('../services/catService');
 
+const getCats = async (req, res) => {
+
+}
+
 const postCat = async (req, res) => {
     try {
         let catName = req.body?.cat;
