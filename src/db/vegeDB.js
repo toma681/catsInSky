@@ -32,10 +32,13 @@ const delVege = async (name) => {
         if (catList.length > 0) {
             for (let i = 0; i < catList.length; i++) {
                 let curCat = await Cat.findOne({name: catList[i]});
-                let index = curCat.veges.indexOf(name);
-                curCat.veges.splice(index);
+                let indexOfVege = curCat.veges.indexOf(name);
+                curCat.veges.splice(indexOfVege);
                 curCat.save();
+                let indexOfCat = catList.indexOf(curCat.name);
+                foundVege.cats.splice(indexOfCat);
             }
+            foundVege.save();
         } else {
             foundVege.delete();
         }
