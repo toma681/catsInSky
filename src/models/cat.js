@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Shark = new Schema ({
-        name: { type: String, required: true },
+const catSchema = new Schema({
+    name: { type: String, required: true },
+    veges: []
 });
 
-module.exports = mongoose.model('Shark', Shark)
+module.exports = mongoose.model('Cat', catSchema)

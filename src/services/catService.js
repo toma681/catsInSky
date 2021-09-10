@@ -1,7 +1,11 @@
 const { postCat } = require('../db/tempDB');
 
-const postAndUpdateRecipes = (cat) => {
-    return postCat(cat);
+const postAndUpdateRecipes = async (catName) => {
+    /*
+    1. 
+
+    */
+    return await postCat(catName);
 }
 
 module.exports = {
