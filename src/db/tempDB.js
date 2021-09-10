@@ -8,6 +8,21 @@ const recipeDB = () => {
       }
 }
 
+const postCat = () => {
+
+}
+
+const postVege = () => {
+
+}
+
+const delVege = () => {
+
+}
+
 module.exports = {
     recipeDB,
+    postCat,
+    postVege,
+    delVege
 }
