@@ -4,10 +4,10 @@ const authenticationDB = require('../db/authenticationDB');
 const saltRounds = 10;
 
 const signup = async (username, password) => {
-    bcrypt.hash(password, saltRounds, (err, hash) => {
-        authenticationDB.signup(username, hash);
-    });
-    return "lit";
+    let hash = await bcrypt.hash(password, saltRounds);
+    let signupStatus = await authenticationDB.signup(username, hash);
+
+    return signupStatus;
 }
 
 const signin = async (username, password) => {
@@ -16,7 +16,7 @@ const signin = async (username, password) => {
 
     if (match) {
         return jwt.sign({ username }, process.env.SECRET, { expiresIn: '1h' });
-    }
+    } 
 }
 
 module.exports = {

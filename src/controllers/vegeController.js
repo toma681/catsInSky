@@ -22,7 +22,7 @@ const remove = async (req, res) => {
         res.send(veges);
     } catch (e) {
         console.log(e);
-        res.status(500).send("You are not authorized");
+        res.status(401).send("You are not authorized");
     }
 }
 

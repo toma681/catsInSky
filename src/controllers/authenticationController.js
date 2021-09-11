@@ -3,11 +3,14 @@ const authenticationService = require('../services/authenticationService');
 const signup = async (req, res) => {
     try {
         ({ username, password } = req.body);
-        await authenticationService.signup(username, password);
-        res.send("lit");
+        let signupStatus = await authenticationService.signup(username, password);
+        if (!signupStatus) {
+            throw new Error("Signup Failed!");
+        }
+        res.send("Signup Successful!");
     } catch (e) {
         console.log(e.message);
-        res.sendStatus(500);
+        res.status(500).send(e.message);
     }
 }
 
@@ -15,10 +18,13 @@ const signin = async (req, res) => {
     try {
         ({ username, password } = req.body);
         let accessToken = await authenticationService.signin(username, password);
-        res.send(accessToken);
+        if (!accessToken) {
+            throw new Error("Signin Failed!");
+        }
+        res.send({ accessToken });
     } catch (e) {
         console.log(e.message);
-        res.sendStatus(500);
+        res.status(403).send(e.message);
     }
 }
 

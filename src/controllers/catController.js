@@ -32,7 +32,7 @@ const remove = async (req, res) => {
         res.send(cats);
     } catch (e) {
         console.log(e.message);
-        res.status(500).send("You are not authorized");
+        res.status(401).send("You are not authorized");
     }
 }
 

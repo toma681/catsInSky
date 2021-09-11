@@ -1,3 +1,4 @@
+const e = require('express');
 const User = require('../models/user');
 
 const signup = async (username, password) => {
@@ -5,7 +6,8 @@ const signup = async (username, password) => {
     if (!userExists) {
         let newUser = new User({ username, password });
         newUser.save();
-    }
+        return newUser.username;
+    } 
 }
 
 const retrieveHashedPassword = async (username) => {
