@@ -1,25 +1,22 @@
-const authenticationDB = require('../db/authenticationDB');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const authenticationDB = require('../db/authenticationDB');
 const saltRounds = 10;
 
 const signup = async (username, password) => {
     bcrypt.hash(password, saltRounds, (err, hash) => {
-        await authenticationDB.signup(username, hash);
-    })
+        authenticationDB.signup(username, hash);
+    });
     return "lit";
 }
 
-const signin = async () => {
-    let cats = await authenticationDB.retrieve();
+const signin = async (username, password) => {
+    let hashedPassword = await authenticationDB.retrieveHashedPassword(username);
+    let match = await bcrypt.compare(password, hashedPassword);
 
-    let recipeFormat = {};
-
-    for (let i = 0; i < cats.length; i++) {
-        let curCat = cats[i];
-        let name = curCat.name;
-        recipeFormat[name] = curCat.veges;
+    if (match) {
+        return jwt.sign({ username }, process.env.SECRET, { expiresIn: '1h' });
     }
-    return recipeFormat;
 }
 
 module.exports = {

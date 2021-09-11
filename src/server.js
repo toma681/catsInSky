@@ -1,16 +1,20 @@
-const env = require('dotenv').config();
+require('dotenv').config();
+require('./utils/dbConnect');
+
 const express = require("express");
-const dbConnection = require('./utils/dbConnect');
+
+const catRoute = require('./routes/catRoute');
+const vegeRoute = require('./routes/vegeRoute');
+const authenticationRoute = require('./routes/authenticationRoute');
 
 const app = express();
-const catRoute = require('./routes/catRoute')
-const vegeRoute = require('./routes/vegeRoute')
 
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json());
 
-app.use(catRoute)
-app.use(vegeRoute)
+app.use(catRoute);
+app.use(vegeRoute);
+app.use(authenticationRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

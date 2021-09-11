@@ -1,19 +1,19 @@
-const User = require('../models/User');
+const User = require('../models/user');
 
 const signup = async (username, password) => {
-    let newUser = new User({ username, password });
-    newUser.save();
+    let userExists = await User.exists({username});
+    if (!userExists) {
+        let newUser = new User({ username, password });
+        newUser.save();
+    }
 }
 
-
-const signin = async () => {
-    let cats = await Cat.find({}, 'name veges');
-    return cats;
+const retrieveHashedPassword = async (username) => {
+    let foundUser = await User.findOne({username});
+    return foundUser.password;
 }
-
-
 
 module.exports = {
-    signin,
     signup,
+    retrieveHashedPassword
 }
