@@ -1,7 +1,12 @@
 const authenticationDB = require('../db/authenticationDB');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
-const signup = async (catName) => {
-    return await authenticationDB.post(catName);
+const signup = async (username, password) => {
+    bcrypt.hash(password, saltRounds, (err, hash) => {
+        await authenticationDB.signup(username, hash);
+    })
+    return "lit";
 }
 
 const signin = async () => {

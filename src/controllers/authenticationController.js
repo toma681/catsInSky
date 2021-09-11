@@ -2,8 +2,8 @@ const authenticationService = require('../services/authenticationService');
 
 const signup = async (req, res) => {
     try {
-        let recipes = await authenticationService.signup();
-        res.send(recipes);
+        ({ username, password } = req.body);
+        await authenticationService.signup(username, password);
     } catch (e) {
         console.log(e.message);
         res.sendStatus(500);
