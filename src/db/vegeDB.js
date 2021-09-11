@@ -4,7 +4,7 @@ const Vege = require('../models/vege');
 const post = async (name) => {
     let vegeExists = await Vege.exists({ name });
     if (!vegeExists) {
-        let newVege = new Vege({ name, firstChar: name[0].toLowerCase() });
+        let newVege = new Vege({ name, firstChar: name[0].toLowerCase(), deleted: false });
     
         let catsToUpdate = await Cat.find({ firstChar: newVege.firstChar });
 
@@ -29,21 +29,21 @@ const remove = async (name) => {
     if (foundVege) {
         let catList = foundVege.cats;
 
-        if (catList.length > 0) {
+        if (!foundVege.deleted) {
+            foundVege.deleted = true;
             for (let i = 0; i < catList.length; i++) {
                 let curCat = await Cat.findOne({name: catList[i]});
                 let indexOfVege = curCat.veges.indexOf(name);
                 curCat.veges.splice(indexOfVege);
                 curCat.save();
-                let indexOfCat = catList.indexOf(curCat.name);
-                foundVege.cats.splice(indexOfCat);
             }
+            foundVege.cats = [];
             foundVege.save();
         } else {
             foundVege.delete();
         }
 
-    } 
+    }
     return "pogDelVege";
 }
 

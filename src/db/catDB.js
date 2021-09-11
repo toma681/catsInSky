@@ -11,7 +11,7 @@ const post = async (name) => {
     if (!catExists) {
         let newCat = new Cat({ name, veges: [], firstChar: name[0].toLowerCase() });
 
-        let vegeList = await Vege.find({ firstChar: newCat.firstChar })
+        let vegeList = await Vege.find({ firstChar: newCat.firstChar, deleted: false })
 
         for (let i = 0; i < vegeList.length; i++) {
             let curVege = vegeList[i];
