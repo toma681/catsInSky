@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const { createVege, deleteVege } = require('../controllers/vegeController');
+const vegeController = require('../controllers/vegeController');
 
-router.post('/vege', createVege);
-router.delete('/vege', deleteVege)
+router.post('/vege', vegeController.post);
+router.delete('/vege', vegeController.remove)
 
 module.exports = router;

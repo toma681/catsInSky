@@ -1,7 +1,7 @@
 const Cat = require('../models/cat');
 const Vege = require('../models/vege');
 
-const postVege = async (name) => {
+const post = async (name) => {
     let vegeExists = await Vege.exists({ name });
     if (!vegeExists) {
         let newVege = new Vege({ name, firstChar: name[0].toLowerCase() });
@@ -24,7 +24,7 @@ const postVege = async (name) => {
     return "pogVege";
 }
 
-const delVege = async (name) => {
+const remove = async (name) => {
     let foundVege = await Vege.findOne({ name });
     if (foundVege) {
         let catList = foundVege.cats;
@@ -48,6 +48,6 @@ const delVege = async (name) => {
 }
 
 module.exports = {
-    postVege,
-    delVege
+    post,
+    remove
 }

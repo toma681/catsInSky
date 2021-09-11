@@ -1,9 +1,9 @@
-const { insertVege, hideOrDeleteVege } = require('../services/vegeService');
+const vegeService = require('../services/vegeService');
 
-const createVege = async (req, res) => {
+const post = async (req, res) => {
     try {
         let vegeName = req.body.vege;
-        let veges = await insertVege(vegeName);
+        let veges = await vegeService.post(vegeName);
         res.send(veges);
     } catch (e) {
         console.log(e.message);
@@ -11,10 +11,10 @@ const createVege = async (req, res) => {
     }
 }
 
-const deleteVege = async (req, res) => {
+const remove = async (req, res) => {
     try {
         let vegeName = req.body.vege;
-        let veges = await hideOrDeleteVege(vegeName);
+        let veges = await vegeService.remove(vegeName);
         res.send(veges);
     } catch (e) {
         console.log(e.message);
@@ -23,6 +23,6 @@ const deleteVege = async (req, res) => {
 }
 
 module.exports = {
-    createVege,
-    deleteVege
+    post,
+    remove
 }
