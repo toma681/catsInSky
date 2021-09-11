@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/user');
 
 const signup = async (username, password) => {
     let userExists = await User.exists({username});
