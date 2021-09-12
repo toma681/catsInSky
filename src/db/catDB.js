@@ -2,7 +2,7 @@ const Cat = require('../models/cat');
 const Vege = require('../models/vege');
 
 const retrieve = async () => {
-    let cats = await Cat.find({}, 'name veges');
+    let cats = await Cat.find({});
     return cats;
 }
 
@@ -22,25 +22,27 @@ const post = async (name) => {
         }
 
         newCat.save();
+    } else {
+        throw new Error("Cat already exists");
     }
-
-    return "pogCat";
 }
 
 const remove = async (name) => {
-    let foundCat = await Cat.findOne({name});
+    let foundCat = await Cat.findOne({ name });
 
     if (foundCat) {
         let vegeList = foundCat.veges;
         for (let i = 0; i < vegeList.length; i++) {
-            let curVege = await Vege.findOne({name: vegeList[i]});
-            
+            let curVege = await Vege.findOne({ name: vegeList[i] });
+
             let catIndex = curVege.cats.indexOf(name);
             curVege.cats.splice(catIndex);
             curVege.save();
         }
 
         foundCat.delete();
+    } else {
+        throw new Error("Cat does not exist");
     }
 }
 

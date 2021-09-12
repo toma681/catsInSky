@@ -7,18 +7,19 @@ const retrieve = async (req, res) => {
         res.send(recipes);
     } catch (e) {
         console.log(e.message);
-        res.sendStatus(500);
+        res.status(500).send(e.message);
     }
 }
 
 const post = async (req, res) => {
     try {
         let catName = req.body.cat;
-        let cats = await catService.post(catName);
-        res.send(cats);
+        await catService.post(catName);
+
+        res.send(`Cat ${catName} created successfully!`);
     } catch (e) {
         console.log(e);
-        res.sendStatus(500);
+        res.status(500).send(e.message);
     }
 }
 
@@ -28,11 +29,12 @@ const remove = async (req, res) => {
         jwt.verify(token, process.env.SECRET);
 
         let catName = req.body.cat;
-        let cats = catService.remove(catName);
-        res.send(cats);
+        catService.remove(catName);
+
+        res.send(`Cat ${catName} removed successfully!`);
     } catch (e) {
         console.log(e.message);
-        res.status(401).send("You are not authorized");
+        res.status(401).send(e.message);
     }
 }
 
