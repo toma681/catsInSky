@@ -5,7 +5,7 @@ const addVege = async (req, res) => {
     try {
         let vegeName = req.body.vege;
         await vegeService.addVege(vegeName);
-        
+
         res.send(`Successfully created new Vege: ${vegeName}!`);
     } catch (e) {
         console.log(e);

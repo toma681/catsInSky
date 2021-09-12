@@ -9,7 +9,7 @@ const authenticationRoute = require('./routes/authenticationRoute');
 
 const app = express();
 
-app.use(express.urlencoded({extended: true})); 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(catRoute);

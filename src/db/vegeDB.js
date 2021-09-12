@@ -5,7 +5,7 @@ const addVegeToDB = async (name) => {
     let vegeExists = await Vege.exists({ name });
     if (!vegeExists) {
         let newVege = new Vege({ name, firstChar: name[0].toLowerCase(), deleted: false });
-    
+
         let catsToUpdate = await Cat.find({ firstChar: newVege.firstChar });
 
         for (let i = 0; i < catsToUpdate.length; i++) {
@@ -32,7 +32,7 @@ const flagOrRemoveVege = async (name) => {
         if (!foundVege.deleted) {
             foundVege.deleted = true;
             for (let i = 0; i < catList.length; i++) {
-                let curCat = await Cat.findOne({name: catList[i]});
+                let curCat = await Cat.findOne({ name: catList[i] });
                 let indexOfVege = curCat.veges.indexOf(name);
                 curCat.veges.splice(indexOfVege, 1);
                 curCat.save();

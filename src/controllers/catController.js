@@ -4,7 +4,7 @@ const catService = require('../services/catService');
 const retrieveRecipes = async (req, res) => {
     try {
         let recipes = await catService.retrieveRecipes();
-        
+
         res.send(recipes);
     } catch (e) {
         console.log(e);
