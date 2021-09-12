@@ -28,3 +28,7 @@
     The existing data from the Cats in the Sky Company API's should not be automatically inserted into
     the Database by this API. Instead, a python script is bundled. When run, this script will populate the
     database.
+## 7. No Duplicate Cats Or Veges
+    It was assumed that the Database should not hold duplicate Cats/Veges. This is because dupes would
+    be identical in terms of their matching recipe. Thus, the API rejects calls that add duplicate
+    Cats/Veges.
