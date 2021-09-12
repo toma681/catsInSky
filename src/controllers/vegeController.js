@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
 const vegeService = require('../services/vegeService');
 
-const post = async (req, res) => {
+const addVege = async (req, res) => {
     try {
         let vegeName = req.body.vege;
-        await vegeService.post(vegeName);
+        await vegeService.addVege(vegeName);
         
         res.send(`Successfully created new Vege: ${vegeName}!`);
     } catch (e) {
@@ -13,13 +13,13 @@ const post = async (req, res) => {
     }
 }
 
-const remove = async (req, res) => {
+const removeVege = async (req, res) => {
     try {
         let token = req.query.token;
         jwt.verify(token, process.env.SECRET);
 
         let vegeName = req.body.vege;
-        await vegeService.remove(vegeName);
+        await vegeService.removeVege(vegeName);
 
         res.send(`Successfully removed Vege: ${vegeName}!`);
     } catch (e) {
@@ -29,6 +29,6 @@ const remove = async (req, res) => {
 }
 
 module.exports = {
-    post,
-    remove
+    addVege,
+    removeVege
 }

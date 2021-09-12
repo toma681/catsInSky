@@ -1,14 +1,14 @@
 const vegeDB = require('../db/vegeDB');
 
-const post = async (vegeName) => {
-    await vegeDB.post(vegeName);
+const addVege = async (vegeName) => {
+    await vegeDB.addVegeToDB(vegeName);
 }
 
-const remove = async (vegeName) => {
-    await vegeDB.remove(vegeName);
+const removeVege = async (vegeName) => {
+    await vegeDB.flagOrRemoveVege(vegeName);
 }
 
 module.exports = {
-    post,
-    remove
+    addVege,
+    removeVege
 }
