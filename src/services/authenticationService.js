@@ -5,9 +5,9 @@ const saltRounds = 10;
 
 const signup = async (username, password) => {
     let hash = await bcrypt.hash(password, saltRounds);
-    let signupStatus = await authenticationDB.signup(username, hash);
+    let newUser = await authenticationDB.signup(username, hash);
 
-    return signupStatus;
+    return newUser;
 }
 
 const signin = async (username, password) => {
@@ -16,7 +16,9 @@ const signin = async (username, password) => {
 
     if (match) {
         return jwt.sign({ username }, process.env.SECRET, { expiresIn: '1h' });
-    } 
+    }
+
+    throw new Error("Signin failed, credentials did not match");
 }
 
 module.exports = {
