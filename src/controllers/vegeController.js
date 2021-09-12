@@ -8,7 +8,7 @@ const addVege = async (req, res) => {
         
         res.send(`Successfully created new Vege: ${vegeName}!`);
     } catch (e) {
-        console.log(e.message);
+        console.log(e);
         res.status(500).send(e.message);
     }
 }

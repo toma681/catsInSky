@@ -7,7 +7,7 @@ const retrieveRecipes = async (req, res) => {
         
         res.send(recipes);
     } catch (e) {
-        console.log(e.message);
+        console.log(e);
         res.status(500).send(e.message);
     }
 }
@@ -34,7 +34,7 @@ const removeCat = async (req, res) => {
 
         res.send(`Successfully removed Cat: ${catName}`);
     } catch (e) {
-        console.log(e.message);
+        console.log(e);
         res.status(401).send(e.message);
     }
 }

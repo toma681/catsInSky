@@ -7,7 +7,7 @@ const signup = async (req, res) => {
 
         res.send(`Successful signup for user: ${newUser}!`);
     } catch (e) {
-        console.log(e.message);
+        console.log(e);
         res.status(500).send(e.message);
     }
 }
@@ -19,7 +19,7 @@ const signin = async (req, res) => {
 
         res.send({ accessToken });
     } catch (e) {
-        console.log(e.message);
+        console.log(e);
         res.status(403).send(e.message);
     }
 }
