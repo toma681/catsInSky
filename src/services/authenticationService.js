@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authenticationDB = require('../db/authenticationDB');
-const saltRounds = 10;
+const saltRounds = 12;
 
 const signup = async (username, password) => {
     let hash = await bcrypt.hash(password, saltRounds);

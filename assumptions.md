@@ -8,7 +8,7 @@
     and DELETE endpoints of both Cat and Vege were implemented separately.
 ## 3. Passwords Should be Encrypted
     For basic security reasons, passwords should be encrypted. Thus, when users sign up, their passwords
-    are hashed with 10 salting rounds.
+    are hashed with 12 salting rounds.
 ## 4. Cats Can be Removed
     The beginning of the API doc states that the API must be able to "Remove a cat name / vege from
     the database. However, the actual DELETE endpoint specification has no mention of removal of cats
