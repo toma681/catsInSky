@@ -19,9 +19,9 @@ const post = async (name) => {
 
         newVege.save()
 
-    } 
-
-    return "pogVege";
+    } else {
+        throw new Error("Vege already exists");
+    }
 }
 
 const remove = async (name) => {
@@ -43,8 +43,9 @@ const remove = async (name) => {
             foundVege.delete();
         }
 
+    } else {
+        throw new Error("Vege does not exist");
     }
-    return "pogDelVege";
 }
 
 module.exports = {

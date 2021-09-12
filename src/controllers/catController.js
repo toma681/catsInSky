@@ -4,6 +4,7 @@ const catService = require('../services/catService');
 const retrieve = async (req, res) => {
     try {
         let recipes = await catService.retrieve();
+        
         res.send(recipes);
     } catch (e) {
         console.log(e.message);
@@ -16,7 +17,7 @@ const post = async (req, res) => {
         let catName = req.body.cat;
         await catService.post(catName);
 
-        res.send(`Cat ${catName} created successfully!`);
+        res.send(`Successfully created new Cat: ${catName}!`);
     } catch (e) {
         console.log(e);
         res.status(500).send(e.message);
