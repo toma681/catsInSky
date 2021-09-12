@@ -2,7 +2,7 @@ const authenticationService = require('../services/authenticationService');
 
 const signup = async (req, res) => {
     try {
-        ({ username, password } = req.body);
+        ({ username, pwd: password } = req.body);
         let newUser = await authenticationService.signup(username, password);
 
         res.send(`Successful signup for user: ${newUser}!`);
