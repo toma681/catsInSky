@@ -1,12 +1,12 @@
 const Cat = require('../models/cat');
 const Vege = require('../models/vege');
 
-const retrieve = async () => {
+const retrieveRecipes = async () => {
     let cats = await Cat.find({});
     return cats;
 }
 
-const post = async (name) => {
+const addCatToDB = async (name) => {
     let catExists = await Cat.exists({ name });
     if (!catExists) {
         let newCat = new Cat({ name, veges: [], firstChar: name[0].toLowerCase() });
@@ -27,7 +27,7 @@ const post = async (name) => {
     }
 }
 
-const remove = async (name) => {
+const removeCatFromDB = async (name) => {
     let foundCat = await Cat.findOne({ name });
 
     if (foundCat) {
@@ -46,7 +46,7 @@ const remove = async (name) => {
 }
 
 module.exports = {
-    retrieve,
-    post,
-    remove
+    retrieveRecipes,
+    addCatToDB,
+    removeCatFromDB
 }

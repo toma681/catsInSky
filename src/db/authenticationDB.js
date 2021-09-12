@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-const signup = async (username, password) => {
+const createNewUser = async (username, password) => {
     let userExists = await User.exists({ username });
     if (!userExists) {
         let newUser = new User({ username, password });
@@ -17,6 +17,6 @@ const retrieveHashedPassword = async (username) => {
 }
 
 module.exports = {
-    signup,
+    createNewUser,
     retrieveHashedPassword
 }

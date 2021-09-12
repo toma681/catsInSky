@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 const catService = require('../services/catService');
 
-const retrieve = async (req, res) => {
+const retrieveRecipes = async (req, res) => {
     try {
-        let recipes = await catService.retrieve();
+        let recipes = await catService.retrieveRecipes();
         
         res.send(recipes);
     } catch (e) {
@@ -12,10 +12,10 @@ const retrieve = async (req, res) => {
     }
 }
 
-const post = async (req, res) => {
+const addCat = async (req, res) => {
     try {
         let catName = req.body.cat;
-        await catService.post(catName);
+        await catService.addCat(catName);
 
         res.send(`Successfully created new Cat: ${catName}!`);
     } catch (e) {
@@ -24,13 +24,13 @@ const post = async (req, res) => {
     }
 }
 
-const remove = async (req, res) => {
+const removeCat = async (req, res) => {
     try {
         let token = req.query.token;
         jwt.verify(token, process.env.SECRET);
 
         let catName = req.body.cat;
-        catService.remove(catName);
+        catService.removeCat(catName);
 
         res.send(`Successfully removed Cat: ${catName}`);
     } catch (e) {
@@ -40,7 +40,7 @@ const remove = async (req, res) => {
 }
 
 module.exports = {
-    retrieve,
-    post,
-    remove
+    retrieveRecipes,
+    addCat,
+    removeCat
 }

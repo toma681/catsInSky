@@ -5,7 +5,7 @@ const saltRounds = 12;
 
 const signup = async (username, password) => {
     let hash = await bcrypt.hash(password, saltRounds);
-    let newUser = await authenticationDB.signup(username, hash);
+    let newUser = await authenticationDB.createNewUser(username, hash);
 
     return newUser;
 }
