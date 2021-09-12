@@ -32,7 +32,7 @@ const remove = async (req, res) => {
         let catName = req.body.cat;
         catService.remove(catName);
 
-        res.send(`Cat ${catName} removed successfully!`);
+        res.send(`Successfully removed Cat: ${catName}`);
     } catch (e) {
         console.log(e.message);
         res.status(401).send(e.message);

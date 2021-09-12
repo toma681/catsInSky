@@ -34,9 +34,8 @@ const remove = async (name) => {
         let vegeList = foundCat.veges;
         for (let i = 0; i < vegeList.length; i++) {
             let curVege = await Vege.findOne({ name: vegeList[i] });
-
             let catIndex = curVege.cats.indexOf(name);
-            curVege.cats.splice(catIndex);
+            curVege.cats.splice(catIndex, 1);
             curVege.save();
         }
 

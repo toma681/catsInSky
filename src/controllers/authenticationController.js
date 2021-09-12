@@ -5,7 +5,7 @@ const signup = async (req, res) => {
         ({ username, password } = req.body);
         let newUser = await authenticationService.signup(username, password);
 
-        res.send(`Signup for user ${newUser} Successful!`);
+        res.send(`Successful signup for user: ${newUser}!`);
     } catch (e) {
         console.log(e.message);
         res.status(500).send(e.message);
