@@ -24,3 +24,7 @@
     If a cat does not have any favorite veges, please return the cat with an empty list. {"Bob": []}
 
     Thus, I made the assumption that ALL cats show up in matchings regardless of their veges.
+## 6. Database Does not Already Include Cat/Vege Data
+    The existing data from the Cats in the Sky Company API's should not be automatically inserted into
+    the Database by this API. Instead, a python script is bundled. When run, this script will populate the
+    database.
